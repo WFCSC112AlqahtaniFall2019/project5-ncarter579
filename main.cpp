@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <time.h>
 #include <cctype>
 #include "Card.h"
 #include "Deck.h"
@@ -12,6 +13,29 @@ int main() {
     int compValue, userValue, nWin = 0, nLoss = 0, nTie = 0;
     srand(time(NULL));
 
+    //Card *c1 = new Card("6", "Spades");
+   // Card *c2 = new Card("5", "Hearts");
+
+   int randomRank = rand() % 13;
+   int randomSuit = rand() % 4;
+
+    Card *user = new Card(ranks[randomRank], suits[randomSuit]);
+    cout << "rank" << randomRank << "Suit" << randomSuit << endl;
+
+    randomRank = rand() % 13;
+    randomSuit = rand() % 4;
+    Card *computer = new Card(ranks[randomRank], suits[randomSuit]);
+
+    cout << "This is for computer card" << endl;
+    cout << "rank" << randomRank << " Suit" << randomSuit << endl;
+
+
+    if(*user < computer){
+        cout << "Its Working " << endl;
+    }
+    else{
+        cout << "Not Working " << endl;
+    }
     play = true;
     while(play) {
         // assign values to computer and user

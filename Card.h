@@ -9,8 +9,18 @@ const string ranks[] = {"Ace","2","3","4","5","6","7","8","9","10","Jack","King"
 const string suits[] = {"Clubs","Diamonds","Hearts","Spades"};
 
 class Card {
+public:
+    Card();
+    Card(string rank, string suits);
+    bool operator<(Card *computer);  //returns true if user wins
+    void print();
 
+private:
+    string rank;
+    string suits;
 };
+
+
 
 
 #endif //BLINDMANSBLUFF_CARD_H
