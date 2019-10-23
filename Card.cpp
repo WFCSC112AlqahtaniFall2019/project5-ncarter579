@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Card.h"
 using namespace std;
 
@@ -6,21 +5,21 @@ Card::Card(){
 
 }
 
-Card::Card(string rank, string suits) {
+Card::Card(int rank, int suit) {
     this-> rank = rank;
-    this-> suits = suits;
+    this-> suit = suit;
 }
 
 bool Card::operator<(Card *computer) {
-    if(rank != computer->rank){   
+    if(rank != computer->rank){
         return rank < computer->rank;
     }
     else{
-        return suits < computer->suits;
+        return suit < computer->suit;
     }
 
 }
-void Card::print() {
-
+string Card::print() {
+    return ranks[rank] + " of " + suits[suit];
 }
 

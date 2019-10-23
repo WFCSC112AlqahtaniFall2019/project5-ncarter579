@@ -4,6 +4,13 @@
 #include "Card.h"
 
 class Deck {
+    Deck ( const Deck & lis );
+    ~ Deck ();
+    Deck& operator= (Deck assignment );
+    void shuffle();
+    void populate();
+    Card removeCard();
+    bool addCard(Card newCard);
 
 private:
     Card* cards;

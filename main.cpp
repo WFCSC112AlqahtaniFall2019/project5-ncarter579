@@ -19,12 +19,12 @@ int main() {
    int randomRank = rand() % 13;
    int randomSuit = rand() % 4;
 
-    Card *user = new Card(ranks[randomRank], suits[randomSuit]);
+    Card *user = new Card(randomRank, randomSuit);
     cout << "rank" << randomRank << "Suit" << randomSuit << endl;
 
     randomRank = rand() % 13;
     randomSuit = rand() % 4;
-    Card *computer = new Card(ranks[randomRank], suits[randomSuit]);
+    Card *computer = new Card(randomRank, randomSuit);
 
     cout << "This is for computer card" << endl;
     cout << "rank" << randomRank << " Suit" << randomSuit << endl;
