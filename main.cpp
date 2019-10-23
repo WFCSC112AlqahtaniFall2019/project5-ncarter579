@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <time.h>
+
 #include <cctype>
 #include "Card.h"
 #include "Deck.h"
@@ -11,42 +11,34 @@ int main() {
     bool play, invalid, guessedHigher;
     string response;
     int compValue, userValue, nWin = 0, nLoss = 0, nTie = 0;
-    srand(time(NULL));
 
-    //Card *c1 = new Card("6", "Spades");
-   // Card *c2 = new Card("5", "Hearts");
+    Deck *cardPile = new Deck();
+    Deck *discardPile = new Deck();
 
-   int randomRank = rand() % 13;
-   int randomSuit = rand() % 4;
+    cardPile->populate();
+    cardPile->shuffle();
 
-    Card *user = new Card(randomRank, randomSuit);
-    cout << "rank" << randomRank << "Suit" << randomSuit << endl;
-
-    randomRank = rand() % 13;
-    randomSuit = rand() % 4;
-    Card *computer = new Card(randomRank, randomSuit);
-
-    cout << "This is for computer card" << endl;
-    cout << "rank" << randomRank << " Suit" << randomSuit << endl;
-
-
-    if(*user < computer){
-        cout << "Its Working " << endl;
-    }
-    else{
-        cout << "Not Working " << endl;
-    }
     play = true;
     while(play) {
         // assign values to computer and user
-        compValue = rand() % 52;
-        userValue = rand() % 52;
+
+
+        Card user = (cardPile->removeCard());
+        Card computer = cardPile->removeCard();
+
+        //int randomRank = rand() % 13;
+        //int randomSuit = rand() % 4;
+        //Card *user = new Card(randomRank, randomSuit);
+
+        //randomRank = rand() % 13;
+        //randomSuit = rand() % 4;
+        //Card *computer = new Card(randomRank, randomSuit);
 
         // get user's bet
-        cout << "Computer's value is " << compValue << endl;
+        cout << "Computer's card is " << computer.print() << endl;
         invalid = true;
         while(invalid) {
-            cout << "Do you think your number is higher or lower? (H/L)" << endl;
+            cout << "Do you think your card is higher or lower? (H/L)" << endl;
             cin >> response;
             if (toupper(response.at(0)) == 'H') {
                 // continue playing
@@ -64,17 +56,17 @@ int main() {
         }
 
         // determine outcome
-        if((compValue < userValue && guessedHigher) || (compValue > userValue && !guessedHigher)) {
+        if((user>computer && guessedHigher) || ( computer > user && !guessedHigher)) {
             cout << "Great! You're right:" << endl;
             nWin++;
-        } else if((compValue > userValue && guessedHigher) || (compValue < userValue && !guessedHigher)) {
+        } else if((computer > user  && guessedHigher) || (user > computer && !guessedHigher)) {
             cout << "Sorry, you're wrong:" << endl;
             nLoss++;
         } else {
             cout << "It's a tie:" << endl;
             nTie++;
         }
-        cout << "\tyour value is " << userValue << endl;
+        cout << "\tyour value is " << user.print() << endl;
 
         // ask user to play again
         invalid = true;
@@ -83,6 +75,10 @@ int main() {
             cin >> response;
             if (toupper(response.at(0)) == 'Y') {
                 // continue playing
+
+                discardPile->addCard(user);
+                discardPile->addCard(computer);
+
                 play = true;
                 invalid = false;
             } else if (toupper(response.at(0)) == 'N') {
@@ -101,5 +97,6 @@ int main() {
     cout << "Thanks for playing!" << endl;
     cout << "Your record was " << nWin << "-" << nLoss << "-" << nTie << " (W-L-T)" << endl;
 
-    return 0;
+
+      return 0;
 }

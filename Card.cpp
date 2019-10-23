@@ -10,12 +10,12 @@ Card::Card(int rank, int suit) {
     this-> suit = suit;
 }
 
-bool Card::operator<(Card *computer) {
-    if(rank != computer->rank){
-        return rank < computer->rank;
+bool Card::operator >(Card computer) {
+    if(rank != computer.rank){
+        return rank > computer.rank;
     }
     else{
-        return suit < computer->suit;
+        return suit >computer.suit;
     }
 
 }

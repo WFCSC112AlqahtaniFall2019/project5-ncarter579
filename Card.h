@@ -12,7 +12,7 @@ class Card {
 public:
     Card();
     Card(int rank, int suits);
-    bool operator<(Card *computer);  //returns true if user wins
+    bool operator>(Card computer);  //returns true if user wins
     string print();
 
 private:

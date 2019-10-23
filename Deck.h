@@ -4,6 +4,8 @@
 #include "Card.h"
 
 class Deck {
+public:
+    Deck();
     Deck ( const Deck & lis );
     ~ Deck ();
     Deck& operator= (Deck assignment );
