@@ -4,7 +4,7 @@
 #include "Card.h"
 
 class Deck {
-public:
+public:                   //public functions for class Deck
     Deck();
     Deck ( const Deck & lis );
     ~ Deck ();
@@ -14,7 +14,7 @@ public:
     Card removeCard();
     bool addCard(Card newCard);
 
-private:
+private:              //private variables for class Deck
     Card* cards;
     int arraySize;
     int cardsLeft;

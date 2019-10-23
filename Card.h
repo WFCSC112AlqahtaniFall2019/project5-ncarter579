@@ -9,13 +9,13 @@ const string ranks[] = {"Ace","2","3","4","5","6","7","8","9","10","Jack","King"
 const string suits[] = {"Clubs","Diamonds","Hearts","Spades"};
 
 class Card {
-public:
+public:      //public functions for class Card
     Card();
     Card(int rank, int suits);
     bool operator>(Card computer);  //returns true if user wins
     string print();
 
-private:
+private:    //private variables for class Card
     int rank;
     int suit;
 };
